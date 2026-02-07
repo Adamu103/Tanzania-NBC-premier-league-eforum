@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | NBC Premier League Forum</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <div class="logo-wrapper">
+            <img src="image.jpg" class="logo-main">
+        </div>
+
+        <h2>Create Account</h2>
+        <p class="subtitle">Join NBC Premier League Forum</p>
+
+        <form onsubmit="registerUser(event)">
+            <div class="input-group">
+                <span class="icon">👤</span>
+                <input type="text" id="regUsername" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" id="regPassword" placeholder="Password" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon">✔</span>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+
+            <button type="submit" class="primary-btn">Register</button>
+        </form>
+
+        <p class="switch-link">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+
+    </div>
+</div>
+
+<script src="api.js"></script>
+<script src="auth.js"></script>
+</body>
+</html>
