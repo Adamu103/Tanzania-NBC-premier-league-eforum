@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBC Premier League Forum - Admin</title>
+
+<!-- Google Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="left-section">
+        <div class="logo-circle">
+            <img src="image.jpg" alt="Logo">
+        </div>
+        <h2>NBC Premier League Forum - Admin</h2>
+    </div>
+
+    <div class="right-section">
+        <a href="#" class="nav-btn">
+            <span class="material-symbols-outlined">home</span>
+            Home
+        </a>
+
+        <a href="#" class="nav-btn logout" onclick="logout()">
+            <span class="material-symbols-outlined">logout</span>
+            Logout
+        </a>
+    </div>
+
+</header>
+
+<div class="main">
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="card">
+            <i class="fa fa-users"></i>
+            <h4>Users</h4>
+            <p id="userCount">0</p>
+        </div>
+
+        <div class="card">
+            <i class="fa fa-comments"></i>
+            <h4>Posts</h4>
+            <p id="postCount">0</p>
+        </div>
+    </div>
+
+    <!-- REGISTER USER -->
+    <div class="form-section">
+        <h3>Register New User</h3>
+        <input type="text" id="username" placeholder="Enter username">
+        <button onclick="addUser()">Add User</button>
+    </div>
+
+    <!-- CREATE POST -->
+    <div class="form-section">
+        <h3>Create Post</h3>
+        <input type="text" id="postTitle" placeholder="Post title">
+        <button onclick="addPost()">Add Post</button>
+    </div>
+
+    <!-- USER LIST -->
+    <div class="list-section">
+        <h3>All Users</h3>
+        <ul id="userList"></ul>
+    </div>
+
+    <!-- POST LIST -->
+    <div class="list-section">
+        <h3>All Posts</h3>
+        <ul id="postList"></ul>
+    </div>
+
+</div>
+
+<script>
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+function updateDashboard() {
+    document.getElementById("userCount").innerText = users.length;
+    document.getElementById("postCount").innerText = posts.length;
+
+    const userList = document.getElementById("userList");
+    userList.innerHTML = "";
+    users.forEach((user, index) => {
+        userList.innerHTML += `
+            <li>
+                ${user}
+                <button onclick="deleteUser(${index})">Delete</button>
+            </li>`;
+    });
+
+    const postList = document.getElementById("postList");
+    postList.innerHTML = "";
+    posts.forEach((post, index) => {
+        postList.innerHTML += `
+            <li>
+                ${post}
+                <button onclick="deletePost(${index})">Delete</button>
+            </li>`;
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+    localStorage.setItem("posts", JSON.stringify(posts));
+}
+
+function addUser() {
+    const username = document.getElementById("username").value;
+    if(username.trim() !== "") {
+        users.push(username);
+        document.getElementById("username").value = "";
+        updateDashboard();
+    }
+}
+
+function addPost() {
+    const title = document.getElementById("postTitle").value;
+    if(title.trim() !== "") {
+        posts.push(title);
+        document.getElementById("postTitle").value = "";
+        updateDashboard();
+    }
+}
+
+function deleteUser(index) {
+    users.splice(index, 1);
+    updateDashboard();
+}
+
+function deletePost(index) {
+    posts.splice(index, 1);
+    updateDashboard();
+}
+
+function logout() {
+    alert("Logged out successfully!");
+    window.location.href = "login.html";
+}
+
+updateDashboard();
+</script>
+
+</body>
+</html>
