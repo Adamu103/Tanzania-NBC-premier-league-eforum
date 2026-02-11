@@ -1,0 +1,82 @@
+/* Background na mwonekano wa jumla */
+body {
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    color: #2c3e50; /* Navy grey-blue for readability */
+    margin: 0;
+    padding: 40px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #1a1a1a; /* Deep charcoal for strong contrast */
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6); /* subtle skymorphism effect */
+}
+
+/* Links */
+a {
+    color: #2980b9; /* Sky blue accent */
+    text-decoration: none;
+}
+a:hover {
+    color: #3498db; /* Lighter sky blue on hover */
+}
+
+/* Card container layout */
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Cards */
+.card {
+    background: rgba(255,255,255,0.85); /* semi-transparent cream overlay */
+    border-radius: 16px;
+    box-shadow: 6px 6px 12px #d1d1d1, -6px -6px 12px #ffffff; /* skymorphism effect */
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #2c3e50;
+    margin: 20px auto;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 8px 8px 16px #c9c9c9, -8px -8px 16px #ffffff;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1a1a1a;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+/* Buttons */
+button, .btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: linear-gradient(145deg, #e0e0e0, #ffffff);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px #c9c9c9, -4px -4px 8px #ffffff; /* skymorphism effect */
+    color: #2c3e50;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+button:hover, .btn:hover {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+}
+
